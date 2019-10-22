@@ -99,7 +99,7 @@ if __name__ == '__main__':
         if contest['summary'] in [ev['summary'] for ev in clist]:
             continue
         
-        t = datetime.strptime(contest['time'], '%Y/%m/%d %H:%M')
+        t = datetime.strptime(contest['time'], '%Y-%m-%d %H:%M:%S%z')
         ev = createEvent(contest['summary'], t, contest['url'])
         service.events().insert(calendarId=target_id, body=ev).execute()
         sleep(1)
